@@ -89,7 +89,7 @@ import './App.css'
   {
     
   }
- ])
+ ], {basename: "/Einstein-Investments"})
 
   function LayoutComponent() {
   return(
