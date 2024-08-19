@@ -51,7 +51,7 @@ const Dashboard = () => {
  const RecentTrans = () => {
    return (
     <div>
-
+      <h1></h1>
     </div>
    )
  }
