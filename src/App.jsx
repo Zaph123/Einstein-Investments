@@ -10,9 +10,9 @@ import Investments from './components/Dashboard/adminLayouts/Investments';
 import Deposits from './components/Dashboard/adminLayouts/Deposits';
 import Withdrawals from './components/Dashboard/adminLayouts/Withdrawals';
 import Transfers from './components/Dashboard/adminLayouts/Transfers';
-import InvestmentLogs from './components/Dashboard/adminLayouts/logs/InvestmentLogs';
-import DepositLogs from './components/Dashboard/adminLayouts/logs/DepositLogs';
-import WithdrawLogs from './components/Dashboard/adminLayouts/logs/WithdrawLogs';
+// import InvestmentLogs from './components/Dashboard/adminLayouts/logs/InvestmentLogs';
+// import DepositLogs from './components/Dashboard/adminLayouts/logs/DepositLogs';
+// import WithdrawLogs from './components/Dashboard/adminLayouts/logs/WithdrawLogs';
 import InvestmentPlans from './pages/InvestmentPlans';
 
 import './App.css'
@@ -69,18 +69,18 @@ import './App.css'
         path: "/dashboard/transfer",
         element: <Transfers />
       },
-      {
-        path: "/dashboard/investment logs",
-        element: <InvestmentLogs />
-      },
-      {
-        path: "/dashboard/deposit logs",
-        element: <DepositLogs />
-      },
-      {
-        path: "/dashboard/withdrawal logs",
-        element: <WithdrawLogs />
-      },
+      // {
+      //   path: "/dashboard/investment logs",
+      //   element: <InvestmentLogs />
+      // },
+      // {
+      //   path: "/dashboard/deposit logs",
+      //   element: <DepositLogs />
+      // },
+      // {
+      //   path: "/dashboard/withdrawal logs",
+      //   element: <WithdrawLogs />
+      // },
         ]
       },
 
