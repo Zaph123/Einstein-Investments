@@ -1,5 +1,4 @@
 import img1 from '../assets/images/money.jpg'
-import img2 from '../assets/svg/Vector 7.svg'
 
 import { FaArrowRight } from 'react-icons/fa';
 
@@ -20,7 +19,7 @@ import { FaArrowRight } from 'react-icons/fa';
               <h1 className="font-bold text-[70px] max-w-[500px] text-[#0c0c0c] leading-[90px] md:text-center sm:text-[3.5rem] sm:leading-[70px]">One place for all your investing</h1>
               <h3 className="w-full max-w-[400px] text-[#535353] md:text-center">Invest in 1,000+ equities for real-time insights and tailored reporting</h3>
             </div>
-            <a href="/plans" className='flex items-center gap-2 shadow-2xl px-[35px] py-[15px] bg-[#0b0b0b] hover:bg-[#1b1b1b] hover:ring-2 hover:ring-[#0000004f] text-white rounded-[50px]'>Get Started <FaArrowRight className='-rotate-45'/> </a>
+            <a href="/Einstein-Investments/plans" className='flex items-center gap-2 shadow-2xl px-[35px] py-[15px] bg-[#0c0c0c] hover:bg-primary active:bg-[#0c0c0c] hover:ring-2 hover:ring-[#0000004f] text-white rounded-[50px]'>Get Started <FaArrowRight className='-rotate-45'/> </a>
           </div> 
           <div className="shadow-2xl col-2 w-full max-w-[400px] h-[600px]">
             <img src={img1} alt="" className='w-full rounded-[10px] h-full'/>

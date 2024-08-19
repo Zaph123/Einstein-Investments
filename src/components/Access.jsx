@@ -3,7 +3,7 @@ import { FaArrowRight } from 'react-icons/fa';
 
  const Access = () => {
     return (
-        <section className="w-full h-auto py-[50px] bg-[#f1f1f1]">
+        <section className="w-full h-auto py-[50px] bg-[#fbfbfb]">
             <div className='w-full flex items-center h-auto p-[10px] justify-evenly gap-[30px] flex-wrap'>
                 <div className="shadow-2xl col-2 w-full max-w-[600px] lg:order-1">
                   <img src={finance} alt="access image" className='w-full rounded-[10px] h-full'/>

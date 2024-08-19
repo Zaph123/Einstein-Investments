@@ -24,10 +24,12 @@ const Btn =[
 const Investments = () => {
   const OVERFLOW = "scroll"
   return (
-    <div className={`w-full h-full overflow-${OVERFLOW} py-[30px] p-10 flex flex-col items-center bg-[#f1f1f1] justify-start gap-[30px]`}>
+    <AnimatePresence>
+    <div className={`w-full h-full overflow-scroll py-[30px] p-10 flex flex-col items-center bg-[#f1f1f1] justify-start gap-[30px]`}>
       <ClientPlans OVERFLOW={OVERFLOW} LOGGED_IN={LOGGED_IN}/>
       <InvestmentLogs />
     </div>
+    </AnimatePresence>
   )
 }
 
@@ -62,7 +64,7 @@ export const ClientPlans = ({LOGGED_IN}) => {
                 type: "spring"
               }}
               layoutId="activeId"
-              className="w-full rounded-full h-full absolute top-0 left-0 bg-[#292929]"/>}
+              className="w-full rounded-full h-full absolute top-0 left-0 bg-[#0c0c0c] hover:bg-primary active:bg-[#0c0c0c]"/>}
               <h3 className="relative transition-colors duration-500">{btn.name}</h3>
               </div>
           )
@@ -98,7 +100,7 @@ export const ClientPlans = ({LOGGED_IN}) => {
     },
   },
   exit: {
-    y: 50,
+    y: -50,
     opacity: 0
   },
  }
@@ -118,7 +120,7 @@ export const ClientPlans = ({LOGGED_IN}) => {
       }
     },
    exit: {
-    y: 50,
+    y: -50,
     opacity: 0
   }
  }
@@ -180,7 +182,6 @@ export const ClientPlans = ({LOGGED_IN}) => {
   }
 
   return (
-    <AnimatePresence>
     <motion.div
     variants={Container}
     initial={"hidden"}
@@ -224,7 +225,6 @@ export const ClientPlans = ({LOGGED_IN}) => {
       )
     })}
   </motion.div>
-  </AnimatePresence>
   )
  }
  const AnnuallyPlans = ({setPlanDetails, navigate, LOGGED_IN, setIsLoading, isLoading}) => {

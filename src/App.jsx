@@ -17,6 +17,8 @@ import InvestmentPlans from './pages/InvestmentPlans';
 
 import './App.css'
 
+const PUBLIC_URL = "/Einstein-Investments"
+
  const router = createBrowserRouter([
   {
     path: "/",
@@ -95,7 +97,7 @@ import './App.css'
   return(
     
       <>
-        <Outlet />
+        <Outlet url={PUBLIC_URL}/>
       </>
     
   )
