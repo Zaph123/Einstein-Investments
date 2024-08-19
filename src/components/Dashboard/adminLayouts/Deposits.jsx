@@ -1,4 +1,4 @@
-import DepositLogs from "./logs/DepositLogs"
+import DepositLogs from "./all-logs/DepositLogs"
 
 const Deposits = () => {
   return (

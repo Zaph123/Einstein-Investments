@@ -1,7 +1,7 @@
  import { useEffect, useState } from "react"
  import { motion, AnimatePresence } from "framer-motion"
  import { Navigate, useNavigate } from "react-router-dom"
- import InvestmentLogs from "./logs/InvestmentLogs"
+ import InvestmentLogs from "./all-logs/InvestmentLogs"
  import { FaCheckCircle } from "react-icons/fa"
 //#3F75FB
 

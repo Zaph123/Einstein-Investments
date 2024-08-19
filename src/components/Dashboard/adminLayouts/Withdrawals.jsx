@@ -1,4 +1,4 @@
-import WithdrawLogs from "./logs/WithdrawLogs"
+import WithdrawLogs from "./all-logs/WithdrawLogs"
 
 const Withdrawals = () => {
   return (
