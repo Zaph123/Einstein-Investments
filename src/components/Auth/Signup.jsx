@@ -105,14 +105,14 @@ import Header_Two from "../../pages/Header_two"
                          type="text" 
                          name="fullName" 
                          id="fullName" 
-                         className="h-[50px] w-full peer rounded-[10px] focus:outline-[#6f6f6f] border-none outline-1 outline-[#e2e2e2] outline px-[10px] bg-white text-[16px]"
+                         className="h-[40px] w-full peer rounded-[10px] focus:outline-[#6f6f6f] border-none outline-1 outline-[#e2e2e2] outline px-[10px] bg-white text-[.9rem]"
                          placeholder="e.g John Doe"
                          {...register("fullName", {
                             required: "please input your Full Name",
                            })}/>
                          
                         </div>
-                        {errors.fullName && <span className='text-red-500 text-[15px]'>{errors.fullName?.message}</span>}
+                        {errors.fullName && <span className='text-red-500 text-[.9rem]'>{errors.fullName?.message}</span>}
                     </div>
                     <div className="input-box relative w-full px-[10px] h-auto flex flex-col items-start justify-center">
                        <label htmlFor="userName" className="flex items-center justify-center gap-2 bg-[#fff] text-[#5b5b5b] pointer-events-none">
@@ -124,14 +124,14 @@ import Header_Two from "../../pages/Header_two"
                          type="text" 
                          name="userName" 
                          id="userName" 
-                         className="h-[50px] w-full peer rounded-[10px] focus:outline-[#6f6f6f] border-none outline-1 outline-[#e2e2e2] outline px-[10px] bg-white text-[16px]"
+                         className="h-[40px] w-full peer rounded-[10px] focus:outline-[#6f6f6f] border-none outline-1 outline-[#e2e2e2] outline px-[10px] bg-white text-[.9rem]"
                          placeholder="e.g Johnny"
                          {...register("userName", {
                             required: "please input your Username",
                            })}/>
                         
                         </div>
-                        {errors.userName && <span className='text-red-500 text-[15px]'>{errors.userName?.message}</span>}
+                        {errors.userName && <span className='text-red-500 text-[.9rem]'>{errors.userName?.message}</span>}
                     </div>
                     <div className="input-box relative w-full px-[10px] h-auto flex flex-col items-start justify-center">
                        <label htmlFor="email" className="flex items-center justify-center gap-2 bg-[#fff] text-[#5b5b5b] pointer-events-none">
@@ -143,7 +143,7 @@ import Header_Two from "../../pages/Header_two"
                          type="email" 
                          name="email" 
                          id="email" 
-                         className="h-[50px]  w-full peer rounded-[10px] focus:outline-[#6f6f6f] border-none outline-1 outline-[#e2e2e2] outline px-[10px] bg-white text-[16px]"
+                         className="h-[40px]  w-full peer rounded-[10px] focus:outline-[#6f6f6f] border-none outline-1 outline-[#e2e2e2] outline px-[10px] bg-white text-[.9rem]"
                          placeholder="e.g johndoe@gmail.com"
                          {...register("email", {
                             required: "Invalid email",
@@ -154,7 +154,7 @@ import Header_Two from "../../pages/Header_two"
                                 return true
                          }})}/>
                         </div>
-                        {errors.email && <span className='text-red-500 text-[15px]'>{errors.email?.message}</span>}
+                        {errors.email && <span className='text-red-500 text-[.9rem]'>{errors.email?.message}</span>}
                     </div>
                     <div className="input-box relative input-box w-full h-auto px-[10px] flex flex-col items-start justify-center">
                        <label htmlFor="passwd" className="flex items-center justify-center gap-2 bg-[#fff] text-[#5b5b5b] pointer-events-none">
@@ -171,7 +171,7 @@ import Header_Two from "../../pages/Header_two"
                          type={changeType}
                          name="passwd" 
                          id="passwd" 
-                         className="w-full h-[50px] peer rounded-[10px] focus:outline-[#6f6f6f] border-none outline-1 outline-[#e2e2e2] outline px-[10px] bg-white text-[16px]"
+                         className="w-full h-[40px] peer rounded-[10px] focus:outline-[#6f6f6f] border-none outline-1 outline-[#e2e2e2] outline px-[10px] bg-white text-[.9rem]"
                          placeholder="********"
                          {...register("password")}/>
                         {showPasswd 
@@ -179,7 +179,7 @@ import Header_Two from "../../pages/Header_two"
                         : <FaEyeSlash onClick={handleShowPasswd} className='absolute top-2/4 -translate-y-2/4 right-[30px] cursor-pointer text-[#858585]'/>
                         }
                         </div>
-                        {errors.password && <span className='text-red-500 text-[15px]'>{errors.password?.message}</span>}
+                        {errors.password && <span className='text-red-500 text-[.9rem]'>{errors.password?.message}</span>}
                     </div>
                     <div className="input-box relative input-box w-full h-auto px-[10px] flex flex-col items-start justify-center">
                         <label htmlFor="confirmPasswd" className="flex items-center justify-center gap-2 bg-[#fff] text-[#5b5b5b] pointer-events-none px-[5px] ">
@@ -195,7 +195,7 @@ import Header_Two from "../../pages/Header_two"
                          type={changeType}
                          name="confirmPasswd" 
                          id="confirmPasswd" 
-                         className="w-full h-[50px] peer rounded-[10px] focus:outline-[#6f6f6f] border-none outline-1 outline-[#e2e2e2] outline px-[10px] bg-white text-[16px]"
+                         className="w-full h-[40px] peer rounded-[10px] focus:outline-[#6f6f6f] border-none outline-1 outline-[#e2e2e2] outline px-[10px] bg-white text-[.9rem]"
                          placeholder="********"
                          {...register("confirmPassword")}/>
                         
@@ -204,16 +204,16 @@ import Header_Two from "../../pages/Header_two"
                         : <FaEyeSlash onClick={handleShowPasswd} className='absolute top-2/4 -translate-y-2/4 right-[30px] cursor-pointer text-[#858585]'/>
                         }
                         </div>
-                        {errors.confirmPassword && <span className='text-red-500 text-[15px]'>{errors.confirmPassword?.message}</span>}
+                        {errors.confirmPassword && <span className='text-red-500 text-[.9rem]'>{errors.confirmPassword?.message}</span>}
                     </div>
-                    <div className='w-full h-[50px] px-[10px] rounded-[10px]'>
-                        <button disabled={isSubmitting} type="submit" className='relative disabled:bg-prim_d active:bg-primary text-lg text-white rounded-[10px] w-full h-[50px] bg-primary hover:bg-prim_f flex items-center justify-center'>
+                    <div className='w-full h-auto px-[10px] rounded-[10px]'>
+                        <button disabled={isSubmitting} type="submit" className='relative disabled:bg-prim_d active:bg-primary text-lg text-white rounded-[10px] w-full h-[45px] bg-primary hover:bg-prim_f flex items-center justify-center'>
                         {!isSubmitting 
                         ? <span>Signup</span> 
                         : <span className='animate-spin w-[25px] h-[25px] block rounded-full border-b-white border-4 border-transparent border-t-white'/>}  
                          </button>
                     </div>
-                    <div className='px-[10px] flex items-center justify-center w-full'>
+                    <div className='px-[10px] flex items-center justify-center w-full text-[.9rem]'>
                         <p className='text-[#585858]'>Already have an Account? <Link to="/login" className='text-[#6366f1] hover:text-[#3033e7]'>Login here</Link></p>
                     </div>
                 </form>

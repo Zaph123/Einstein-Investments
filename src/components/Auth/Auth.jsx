@@ -27,9 +27,9 @@ const Auth = () => {
        console.log(toggleTab);
     }
   return (
-    <div className="relative w-full bg-[#fbfbfb] min-h-screen flex items-center justify-center p-10">
-        <Header_Two />
-      <div className="w-full h-full max-w-[500px] shadow-xl rounded-[10px] flex flex-col items-start justify-center">
+    <div className="relative w-full bg-[#fbfbfb] min-h-screen flex flex-col items-center justify-center py-[30px] px-10">
+        {/* <Header_Two /> */}
+      <div className="w-full h-full max-w-[450px] shadow-xl rounded-[10px] flex flex-col items-start justify-center">
         <nav className="flex items-start z-50 h-[40px] w-full">
             {tab.map(c => {
                 return( 

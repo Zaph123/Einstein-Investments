@@ -7,6 +7,7 @@ import {
 // import { FaBarsStaggered } from "react-icons/fa6";
 // import { FaTimes } from "react-icons/fa";
 import { useState } from "react";
+import HamburgerMenu from "./HamburgerMenu";
 
 const Header = () => {
   const [openNav, setOpenNav] = useState(false);
@@ -22,25 +23,7 @@ const Header = () => {
     setOpenNav(!openNav);
   };
 
-  const toggleBar = {
-    initial: {
-    rotate: 0
-    },
-    rotate1: {
-      rotate: "45deg",
-      y: 9
-    },
-    hide: {
-      scale: 0
-    },
-    show: {
-      x: 5
-    },
-    rotate3: {
-      rotate: "-45deg",
-      y: -7
-    },
-  };
+ 
   
   return (
     <motion.header className="header w-full z-[1000] bg-white fixed top-0 left-0 h-auto border-b-[#f2f2f2] border-[2px] p-3">
@@ -89,44 +72,8 @@ const Header = () => {
             Get Started
           </a>
         </div>
-        {/* <motion.div
-          initial={{ scale: 1.3 }}
-          whileHover={{
-            scale: 1.4,
-          }}
-          transition={{
-            duration: 0.5,
-          }}
-          className="cursor-pointer hidden lg:block"
-          onClick={handleOpenNav}
-        >
-          {openNav ? <FaTimes /> : <FaBarsStaggered />}
-        </motion.div> */}
 
-        <motion.div
-          className="w-[1.6rem] h-[1.25rem] lg:flex cursor-pointer hidden flex-col justify-between gap-1 items-center"
-          style={{scale: .9}}
-          whileTap={{ scale: 0.85 }}
-          onClick={handleOpenNav}
-        >
-          <motion.span
-            className="w-full h-1 bg-black rounded-[25%] origin-center"
-            variants={toggleBar}
-            animate={openNav ? "rotate1" : ""}
-          />
-          <motion.span
-            // style={{transform: 'scaleX(0.5)',
-            //     transformOrigin: "right"}}
-            className="w-full h-1 bg-black rounded-[25%] translate-x-[5px]"
-            variants={toggleBar}
-            animate={openNav ? "hide" : "show"}
-          />
-          <motion.span
-            className="w-full h-1 bg-black rounded-[25%] origin-center"
-            variants={toggleBar}
-            animate={openNav ? "rotate3" : ""}
-          />
-        </motion.div>
+        <HamburgerMenu handleOpenNav={handleOpenNav} openNav={openNav}/>
       </nav>
       <SideHeaderNav openNav={openNav} />
     </motion.header>
