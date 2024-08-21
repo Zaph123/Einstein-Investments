@@ -98,7 +98,7 @@ import useLocalStorage from '../../hooks/useLocalStorage';
                                 return true
                          }})}/>
                         </div>
-                        {errors.email && <span className='text-red-500 text-[15px]'>{errors.email?.message}</span>}
+                        {errors.email && <span className='text-red-500 text-[.9rem]'>{errors.email?.message}</span>}
                     </div>
                     <div className="input-box relative input-box w-full h-auto px-[10px] flex flex-col items-start justify-center">
                         <label htmlFor="passwd" className="flex items-center justify-center gap-2 bg-[#fff] text-[#5b5b5b] pointer-events-none">
@@ -121,7 +121,7 @@ import useLocalStorage from '../../hooks/useLocalStorage';
                         : <FaEyeSlash onClick={handleShowPasswd} className='absolute top-2/4 -translate-y-2/4 right-[30px] cursor-pointer text-[#858585]'/>
                         }
                         </div>
-                        {errors.password && <span className='text-red-500 text-[15px]'>{errors.password?.message}</span>}
+                        {errors.password && <span className='text-red-500 text-[.9rem]'>{errors.password?.message}</span>}
                     </div>
                     <div className='w-full flex items-center justify-between px-[10px]'>
                         <div className='flex items-center gap-2 text-[#585858] text-[.9rem]'>
