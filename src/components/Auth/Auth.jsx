@@ -27,10 +27,10 @@ const Auth = () => {
        console.log(toggleTab);
     }
   return (
-    <div className="relative w-full min-h-screen flex flex-col items-center justify-center py-[30px]">
+    <div className="relative w-full min-h-screen flex flex-col items-center justify-center py-[30px] px-10">
         {/* <Header_Two /> */}
       <div className="w-full h-full max-w-[450px] rounded-[10px] flex flex-col items-start justify-center">
-        <nav className="flex items-start z-50 h-[40px] w-full">
+        {/* <nav className="flex items-start z-50 h-[40px] w-full">
             {tab.map(c => {
                 return( 
                <div onClick={() => changeTab(c.id)} className={`relative group hover:bg-[#fbfbfb] h-full w-auto ${c.id === toggleTab[0].id ? "bg-white" : "bg-[#f5f5f5]"}`}>
@@ -40,8 +40,8 @@ const Auth = () => {
             )
             })}
             
-        </nav>
-        <main className="w-full bg-white p-10 h-full">
+        </nav> */}
+        <main className="w-full bg-white h-full">
           <Outlet />
         </main>
       </div>

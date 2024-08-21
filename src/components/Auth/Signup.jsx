@@ -4,8 +4,7 @@ import * as yup from 'yup'
 import { yupResolver } from "@hookform/resolvers/yup"
 import { FaUser, FaEye, FaEyeSlash, FaLock, FaEnvelope } from "react-icons/fa"
 import useLocalStorage from '../../hooks/useLocalStorage'
-import { Link } from "react-router-dom"
-import Header_Two from "../../pages/Header_two"
+
 
  const  Signup = () => {
     const [passwd, setPasswd] = useState("")
@@ -214,7 +213,7 @@ import Header_Two from "../../pages/Header_two"
                          </button>
                     </div>
                     <div className='px-[10px] flex items-center justify-center w-full text-[.9rem]'>
-                        <p className='text-[#585858]'>Already have an Account? <Link to="/login" className='text-[#6366f1] hover:text-[#3033e7]'>Login here</Link></p>
+                        <p className='text-[#585858]'>Already have an Account? <a href="/Einstein-Investments/auth/login" className='text-[#6366f1] hover:text-[#3033e7]'>Login here</a></p>
                     </div>
                 </form>
             </div>

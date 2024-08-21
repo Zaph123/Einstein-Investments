@@ -2,12 +2,10 @@ import { FaUser, FaEye, FaEyeSlash, FaEnvelope } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form'
 import {yupResolver} from '@hookform/resolvers/yup'
+import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup'
 import useLocalStorage from '../../hooks/useLocalStorage';
-import { Link } from 'react-router-dom';
-import Header_Two from '../../pages/Header_two';
-import {useNavigate} from 'react-router-dom'
-import login_img from '../../assets/images/man-with-money.jpg'
+// import login_img from '../../assets/images/man-with-money.jpg'
 
  const Login = () => {
     const [showPasswd, setShowPasswd] = useState(false)
@@ -141,7 +139,7 @@ import login_img from '../../assets/images/man-with-money.jpg'
                          </button>
                     </div>
                     <div className='px-[10px] flex items-center justify-center w-full text-[.9rem]'>
-                        <p className='text-[#585858]'>Not registered yet? <Link to="/" className='text-[#6366f1] hover:text-[#3033e7]'>Create an Account</Link></p>
+                        <p className='text-[#585858]'>Not registered yet? <a href="/Einstein-Investments/auth/signup" className='text-[#6366f1] hover:text-[#3033e7] cursor-pointer'>Create an Account</a></p>
                     </div>
                 </form>
             {/* <div className='hover:ring-2 cursor-pointer hover:scale-105 transition-transform duration-300 bg-[#265ed74f] rounded-xl hover:text-[#265ed7] text-[#4570cc]'>
