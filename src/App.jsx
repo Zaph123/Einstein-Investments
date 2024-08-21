@@ -97,7 +97,7 @@ const PUBLIC_URL = "/Einstein-Investments"
   return(
     
       <>
-        <Outlet url={PUBLIC_URL}/>
+        <Outlet/>
       </>
     
   )
