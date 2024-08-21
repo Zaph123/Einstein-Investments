@@ -34,7 +34,7 @@ const Header = () => {
         </div>
         <div className="links lg:hidden flex items-center justify-between gap-3 h-full w-auto">
           <a
-            href="/"
+            href="/Einstein-Investments/"
             className="font-normal text-[#797979] hover:text-primary p-10"
           >
             Home
@@ -114,7 +114,7 @@ const SideHeaderNav = ({ openNav }) => {
     >
       <div className="links flex items-center justify-center flex-col gap-1 h-auto w-full">
         <a
-          href="/"
+          href="/Einstein-Investments/"
           className="font-normal text-[#797979] hover:text-primary p-10 w-full rounded-xl hover:bg-[#f8f8f8] openNav:bg-[#f1f1f1]"
         >
           Home

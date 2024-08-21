@@ -134,7 +134,7 @@ import useLocalStorage from '../../hooks/useLocalStorage';
                         <button disabled={isSubmitting} type="submit" className='relative disabled:bg-prim_d active:bg-primary text-lg text-white rounded-[10px] w-full h-[45px] bg-primary hover:bg-prim_f flex items-center justify-center'>
                         {!isSubmitting 
                         ? <span>Login</span> 
-                        : <><span className='animate-spin w-[25px] h-[25px] block rounded-full border-b-white border-4 border-transparent border-t-white'/><span className='text-[.9rem] ml-2'>Logging in</span></>
+                        : <><span className='animate-spin w-[25px] h-[25px] block rounded-full border-b-white border-4 border-transparent border-t-white'/><span className='text-[.9rem] ml-2'>Logging in...</span></>
                          }  
                          </button>
                     </div>

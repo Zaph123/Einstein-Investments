@@ -155,7 +155,7 @@ import userProfileImg from '../../../assets/images/profile-1.png'
       {
         id: 4,
         id2: 10,
-        href: "/auth/login",
+        href: "/Einstein-Investments/auth/login",
         name: "Logout",
         arr: 1,
         subLinks: [],
