@@ -15,7 +15,7 @@ import { FaArrowRight } from 'react-icons/fa';
         <div className='w-full h-auto flex items-center flex-wrap justify-evenly gap-[30px] z-10'>
            <div className="w-full max-w-[700px] flex flex-col items-start md:items-center justify-center gap-4">
             <div className='flex flex-col items-start md:items-center justify-center gap-4'>
-              <h3 className='bg-[#e0eaff] px-3 rounded-xl text-[0.8rem] text-[#265ed7] '>Trusted by Millions</h3>
+              <h3 className='bg-[#e0eaff] px-3 rounded-xl text-[0.8rem] text-[#265ed7] '>🔥 Trusted by Millions</h3>
               <h1 className="font-bold text-[70px] max-w-[500px] text-[#0c0c0c] leading-[90px] md:text-center sm:text-[3.5rem] sm:leading-[70px]">One place for all your investing</h1>
               <h3 className="w-full max-w-[400px] text-[#535353] md:text-center">Invest in 1,000+ equities for real-time insights and tailored reporting</h3>
             </div>
