@@ -89,8 +89,8 @@ import Header_Two from "../../pages/Header_two"
     <section className="w-full flex flex-col items-center justify-center">
             
             <div className="flex flex-col items-center pt-[10px] bg-white  form-body w-full h-auto">
-                <div className='self-start px-[20px] leading-[50px]'>
-                  <h1 className='text-4xl font-bold text-ma'>SignUp</h1>
+                <div className='self-start px-[20px]'>
+                  <h1 className='text-4xl font-bold'>SignUp</h1>
                   <p className='text-[#999] text-[0.9rem]'>Hi, Welcome User please fill in your details below 👇</p>
                 </div> 
                 <form action="/" method='post' onSubmit={handleSubmit(onSubmit)} className="inner w-full h-auto p-[10px] flex flex-col items-start justify-center gap-[20px]">

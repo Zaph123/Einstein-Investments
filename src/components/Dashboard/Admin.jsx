@@ -6,7 +6,7 @@
  
  const Admin = () => {
    return (
-    <main className="w-full bg-[#f1f1f1] h-screen ">
+    <main className="w-full bg-[#fbfbfb] h-screen ">
       <div className="w-full h-screen flex items-center justify-center divide-x-2 divide-[#e4e4e4]">
        <SideNav />
        <div className="w-full h-screen overflow-hidden flex flex-col items-center justify-start">
