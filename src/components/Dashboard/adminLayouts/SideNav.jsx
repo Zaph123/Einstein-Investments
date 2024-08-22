@@ -155,7 +155,7 @@ import userProfileImg from '../../../assets/images/profile-1.png'
       {
         id: 4,
         id2: 10,
-        href: "/Einstein-Investments/auth/login",
+        href: "/Einstein-Investments/",
         name: "Logout",
         arr: 1,
         subLinks: [],
@@ -228,7 +228,7 @@ import userProfileImg from '../../../assets/images/profile-1.png'
     }
     
     return (
-       <section id="SideNav" className="w-full xl:hidden h-full max-w-[260px] bg-[#fff] overflow-y-auto">
+       <section id="SideNav" className="w-full lg:hidden h-full max-w-[260px] bg-[#fff] overflow-y-auto">
          <nav className="w-full h-full p-[10px] flex flex-col items-start justify-start gap-[10px]">
            {/* <div className="w-full p-[10px]">
              <h1 className="text-[35px] font-bold text-main_blue">e-invest</h1>

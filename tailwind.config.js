@@ -26,7 +26,7 @@ export default {
         200: '200px',
       },
       fontFamily: {
-        poppins: ['Poppins', 'DM Serif Display', 'Montserrat', 'Playfair Display'],
+        poppins: ['Montserrat','Poppins', 'DM Serif Display', 'Playfair Display'],
         geist: ["Geist", "Serif"],
       },
       colors: {

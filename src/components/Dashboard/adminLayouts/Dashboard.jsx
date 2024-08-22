@@ -3,7 +3,7 @@ import { FaArrowLeft } from "react-icons/fa"
 const Dashboard = () => {
   return (
     <section className="w-full h-full py-[30px] px-10 overflow-auto">
-        <div className="w-full h-auto py-10 flex flex-col items-start">
+        <div className="w-full h-auto py-10 flex flex-col items-start overflow-x-scroll">
           <h1 className="font-normal text-[1.02rem]">Hello and Welcome Sabrina!👏</h1>
            <div className="w-full h-auto flex items-center lg:flex-wrap justify-around gap-3 py-[20px]">
             <div className="w-full max-w-[500px] bg-primary p-[30px] h-[200px] rounded-xl shadow-md">
@@ -42,6 +42,7 @@ const Dashboard = () => {
  const Recents = () => {
   return (
     <div>
+      <h1 className="text-[2rem] font-bold">Overview</h1>
        <h2>Recent transactions</h2>
        <div></div>
     </div>

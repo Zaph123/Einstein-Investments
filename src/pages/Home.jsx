@@ -1,6 +1,7 @@
 import Header from "../components/Layout/Header";
 import Hero from "../components/Hero";
 import Access from '../components/Access'
+import Footer from "../components/Layout/Footer";
 
  const Home = () => {
     return (
@@ -8,6 +9,7 @@ import Access from '../components/Access'
         <Header />
         <Hero />
         <Access />
+        <Footer />
       </main>
     )
  }

@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 
-
 const toggleBar = {
     initial: {
     rotate: 0

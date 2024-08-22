@@ -197,7 +197,7 @@ export const ClientPlans = ({LOGGED_IN}) => {
       return (
         <motion.div key={plan.id} variants={item} className={`w-full ${plan.id === 2 ? "bg-[#292929] border-[#0d0d0d]" : "bg-[#f1f1f1] border-[#ddd]"} rounded-xl max-w-[400px] h-auto p-10 border-2`}>
         <div className="w-full h-full flex flex-col items-start justify-start py-10 px-[25px] gap-[20px]">
-          <h2 className={`w-full flex items-center justify-between font-bold text-[1.5] ${plan.id === 2 ? "text-white" : "text-[#292929]"}`}>{plan.planType} {plan.id === 2 && <span className="font-normal py-1 px-3 rounded-full bg-[#5569c7]">Popular</span>}</h2>
+          <h2 className={`w-full flex items-center justify-between font-bold text-[1.5] ${plan.id === 2 ? "text-white" : "text-[#292929]"}`}>{plan.planType} {plan.id === 2 && <span className="font-normal py-1 px-3 rounded-full bg-[#5569c7]">🔥 Popular</span>}</h2>
           <h1 className="flex items-end justify-center border-b-2 border-[#ddd]">
             <p className={`text-[2.5rem] ${plan.id === 2 ? "text-white" : "text-[#292929]"}`}>{plan.amount}</p>
             <span className={`text-[0.85rem] ${plan.id === 2 ? "text-[#e2e2e2]" : "text-[#797979]"}`}>/mon</span></h1>
@@ -295,7 +295,7 @@ export const ClientPlans = ({LOGGED_IN}) => {
       return (
         <motion.div key={plan.id} variants={item} className={`w-full ${plan.id === 2 ? "bg-[#292929] border-[#000]" : "bg-[#f1f1f1] border-[#ddd]"} rounded-xl max-w-[350px] h-auto p-10 border-2`}>
         <div className="w-full h-full flex flex-col items-start justify-start py-10 px-[25px] gap-[20px]">
-        <h2 className={`w-full flex items-center justify-between font-bold text-[1.5] ${plan.id === 2 ? "text-white" : "text-[#292929]"}`}>{plan.planType} {plan.id === 2 && <span className="font-normal py-1 px-3 rounded-full bg-[#5569c7]">Popular</span>}</h2>
+        <h2 className={`w-full flex items-center justify-between font-bold text-[1.5] ${plan.id === 2 ? "text-white" : "text-[#292929]"}`}>{plan.planType} {plan.id === 2 && <span className="font-normal py-1 px-3 rounded-full bg-[#5569c7]">🔥 Popular</span>}</h2>
           <h1 className="flex items-end justify-center border-b-2 border-[#ddd]">
             <p className={`text-[2.5rem] ${plan.id === 2 ? "text-white" : "text-[#292929]"}`}>{plan.amount}</p>
             <span className={`text-[0.85rem] ${plan.id === 2 ? "text-[#e2e2e2]" : "text-[#797979]"}`}>/yr</span></h1>

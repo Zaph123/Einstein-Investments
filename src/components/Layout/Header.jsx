@@ -40,7 +40,7 @@ const Header = () => {
             Home
           </a>
           <a
-            href="#"
+            href="/Einstein-Investments/plans"
             className="font-normal text-[#797979] hover:text-primary p-10"
           >
             Our Plans
@@ -49,7 +49,7 @@ const Header = () => {
             href="#"
             className="font-normal text-[#797979] hover:text-primary p-10"
           >
-            About
+            About Us
           </a>
           <a
             href="#"
