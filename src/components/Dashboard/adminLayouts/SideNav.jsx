@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react"
 import { FaAngleRight, FaCog } from "react-icons/fa"
 import { motion, AnimatePresence, easeInOut } from 'framer-motion'
-import {Link} from 'react-router-dom' 
-import userProfileImg from '../../../assets/images/profile-1.png'
+import {Link} from 'react-router-dom'
 
 const side_links = [
   [{
@@ -178,12 +177,16 @@ const showHide = {
     )
   }
 
-
+  
   export const NavMenu = ({setOpenNav}) => {
     const [showSubMenu, setShowSubMenu] = useState(false)
     const [tab, setTab] = useState([{id: 1, id2: 1}])
 
     const [navLinks, setNavLinks] = useState(side_links)
+    
+    // useEffect(() => {
+      
+    // })
 
     const menuLogic = (id, arrIndex) => {
       const targetArr = arrIndex
@@ -203,8 +206,6 @@ const showHide = {
      
       if(target === 5){
         setNavLinks(updatedSideNavLinks)
-      }else{
-        setOpenNav(false)
       }
 
       const navROW1 = navLinks[targetArr].filter(link => link.id === id)
@@ -225,10 +226,10 @@ const showHide = {
 
     return (
       <nav className="w-full h-full p-[10px] flex flex-col items-start justify-start gap-[10px]">
-      {/* <div className="w-full p-[10px]">
+      <div className="w-full p-[10px] lg:hidden">
         <h1 className="text-[35px] font-bold text-main_blue">e-invest</h1>
-      </div> */}
-           <div className='cursor-pointer transition-colors duration-300 px-1 border-[#fbfbfb] border-2 rounded-xl hover:bg-[#fbfbfb] relative flex py-[15px] w-full items-center justify-start gap-[10px]'>
+      </div>
+           {/* <div className='cursor-pointer transition-colors duration-300 px-1 border-[#fbfbfb] border-2 rounded-xl hover:bg-[#fbfbfb] relative flex py-[15px] w-full items-center justify-start gap-[10px]'>
             <div className='w-[40px] h-[40px] group cursor-pointer rounded-full overflow-hidden flex justify-center items-center'>
               <img src={userProfileImg} alt="profile image" className='group-hover:scale-110 transition-all duration-300 '/>
             </div>
@@ -238,7 +239,7 @@ const showHide = {
             </div>
        <div className="absolute right-1 w-[30px] h-[30px] transition-colors duration-300 flex items-center justify-center rounded-full text-[#797979] hover:bg-[#f1f1f1]">
        <FaAngleRight className="w-full"/></div>
-     </div>
+     </div> */}
        <span className="border-t-2 border-[#f5f5f5] w-full"/>
       <div className="flex flex-col items-start gap-50 justify-between h-full w-full">
       <ul className="w-full flex flex-col items-start justify-evenly gap-[5px]">

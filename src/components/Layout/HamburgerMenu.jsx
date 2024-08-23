@@ -24,7 +24,7 @@ const toggleBar = {
 const HamburgerMenu = ({handleOpenNav, openNav}) => {
   return (
     <motion.div
-      className="w-[1.6rem] h-[1.25rem] lg:flex cursor-pointer hidden flex-col justify-between gap-1 items-center"
+      className="w-[1.6rem] h-[1.25rem] flex-shrink-0 lg:flex cursor-pointer hidden flex-col justify-between gap-1 items-center"
       style={{ scale: 0.9 }}
       whileTap={{ scale: 0.85 }}
       onClick={handleOpenNav}

@@ -61,7 +61,7 @@ const DepositLogs = () => {
           </tr>
           {Table.map(table => {
             return (
-              <tr className="h-30">
+              <tr className="h-30" key={table.id}>
                 {table.values.map(t => {
                   return (
                     <td className="px-10 py-5 text-[#797979]">{t.value}</td>

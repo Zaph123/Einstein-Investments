@@ -16,23 +16,23 @@ const TopNav = () => {
 
     return (
       <section className="w-full h-auto bg-white relative">
-        <nav className="w-full h-[70px] text-[#b1b1b1] flex items-center justify-between px-10">
+        <nav className="w-full h-[70px] text-[#b1b1b1] flex items-center justify-between gap-10 px-10 py-5">
         {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeWidth='2' className="w-[24px]" fill="currentColor">
         <path d="M6 8V7C6 3.68629 8.68629 1 12 1C15.3137 1 18 3.68629 18 7V8H20C20.5523 8 21 8.44772 21 9V21C21 21.5523 20.5523 22 20 22H4C3.44772 22 3 21.5523 3 21V9C3 8.44772 3.44772 8 4 8H6ZM19 10H5V20H19V10ZM11 15.7324C10.4022 15.3866 10 14.7403 10 14C10 12.8954 10.8954 12 12 12C13.1046 12 14 12.8954 14 14C14 14.7403 13.5978 15.3866 13 15.7324V18H11V15.7324ZM8 8H16V7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7V8Z">
           </path></svg> */}
 
+             <HamburgerMenu handleOpenNav={handleOpenNav} openNav={openNav}/>
           <h1 className='text-[1.8rem] text-[#252525] font-bold'>Dashboard</h1>
 
-          <div className='w-auto h-auto flex items-center justify-between gap-[20px]'>
-            <form action="#" method="post" className='h-auto lg:hidden w-auto'>
-              <label className='relative h-[45px] w-full min-w-[300px] flex items-center justify-center'>
-                <div className='absolute top-2/4 -translate-y-2/4 left-0 w-[45px] flex item-center justify-center'>
+          <div className='w-full max-w-[450px] h-auto flex items-center justify-between gap-[20px]'>
+            <form action="#" method="post" className='h-auto lg:hidden w-full'>
+              <label className='relative bg-[#f1f1f1] rounded-full p-10 h-[45px] w-full flex items-center justify-center'>
+                <div className='w-auto flex item-center justify-start'>
                     <FaSearch className='text-[#585858]'/>
                 </div>
-                <input type="search" name="search" placeholder='Search here...' className='text-[#000] p-10 pl-[40px] focus:outline-none focus:ring-1 focus:ring-primary  bg-[#f1f1f1] w-full rounded-[50px]' />
+                <input type="search" name="search" placeholder='Search here...' className='text-[#000] p-10 focus:outline-none rounded-full border-none bg-[#f1f1f1] w-full' />
               </label>
             </form>
-             <HamburgerMenu handleOpenNav={handleOpenNav} openNav={openNav}/>
           </div>
 
 
@@ -46,15 +46,18 @@ const TopNav = () => {
             </div>
           </div> */}
 
-          {/* <div className='flex items-center justify-center gap-[10px]'>
-            <div className='w-12 h-12 group cursor-pointer rounded-full overflow-hidden flex justify-center items-center'>
+         <div className='cursor-pointer transition-colors duration-300 px-1 border-[#fbfbfb] border-2 rounded-xl hover:bg-[#fbfbfb] relative flex py-10 w-full md:rounded-full md:max-w-max max-w-[250px] items-center justify-start gap-[10px]'>
+            <div className='w-[40px] h-[40px] group cursor-pointer rounded-full overflow-hidden flex justify-center items-center'>
               <img src={userProfileImg} alt="profile image" className='group-hover:scale-110 transition-all duration-300 '/>
-              </div>
-            <div>
-                <h1 className='text-[#0d0d0d] font-bold'>Sabrina Carpenter</h1>
-                <h3 className='text-[14px]'>Admin</h3>
-                </div>
-                </div> */}
+            </div>
+            <div className='md:hidden'>
+                <h1 className='text-[#0d0d0d] font-bold text-[0.9rem]'>Sabrina Carpenter</h1>
+                <h3 className='text-[0.8rem]'>Bank Accountant</h3>
+            </div>
+           <div className="absolute md:hidden right-1 w-[30px] h-[30px] transition-colors duration-300 flex items-center justify-center rounded-full text-[#797979] hover:bg-[#f1f1f1]">
+         <FaAngleRight className="w-full"/>
+         </div>
+        </div>
         </nav>
         <SideHeaderNav openNav={openNav} setOpenNav={setOpenNav}/>
       </section>
