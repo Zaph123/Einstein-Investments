@@ -2,7 +2,7 @@ import { FaFacebook, FaWhatsapp, FaInstagram, FaTwitter, FaPhone, FaBriefcase } 
 
 const Footer = () => {
   return (
-    <footer className="w-full flex mt-[100px] bg-[#fbfbfb] flex-col items-center justify-center py-10 px-[20px] gap-[30px]">
+    <footer className="w-full flex mt-[100px] bg-[#fbfbfb] flex-col items-center justify-center py-[30px] px-[20px] gap-[30px]">
       <div className="w-full flex items-start justify-evenly lg:justify-start flex-wrap gap-[20px]">
         <div className="w-full max-w-[400px] flex flex-col items-start justify-center">
           <h2 className="text-main_blue text-[1.9rem] font-bold">e-invest</h2>

@@ -4,59 +4,62 @@ import {
   useMotionValueEvent,
   useMotionValue,
 } from "framer-motion";
-// import { FaBarsStaggered } from "react-icons/fa6";
-// import { FaTimes } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import HamburgerMenu from "./HamburgerMenu";
 
 const Header = () => {
   const [openNav, setOpenNav] = useState(false);
-
+  const [hidden, setHidden] = useState(false)
+  const [showBorder, setShowBorder] = useState(0)
   const { scrollY } = useScroll();
   const x = useMotionValue(0);
-
-  //  useMotionValueEvent(scrollY, 'change', latest => {
-  //   console.log(latest)
-  //  })
 
   const handleOpenNav = () => {
     setOpenNav(!openNav);
   };
 
- 
-  
+
+  useMotionValueEvent(scrollY, "change", 
+    latest => {
+        const previous = scrollY.getPrevious();
+        if(latest > previous && latest > 150){
+            setHidden(true)
+            setShowBorder(latest)
+        }
+        else{
+            setHidden(false)
+        }
+    })
+
+   const NavBehaviour = {
+    show: {
+      y: 0,
+      transition: {
+        duration: .9,
+        ease: "easeInOut"
+      }
+    },
+    hide: {
+      y: -100
+    }
+   }
   return (
-    <motion.header className="header w-full z-[1000] bg-white fixed top-0 left-0 h-auto border-b-[#f2f2f2] border-[2px] p-3">
+    <motion.header 
+    variants={NavBehaviour} 
+    initial={"show"} 
+    animate={hidden ? "hide" : "show"} 
+    style={{borderBottom: showBorder > 150 ? "2px solid #f2f2f2": "none"}}
+    className="header w-full z-[1000] bg-white fixed top-0 left-0 h-auto p-3">
       <nav className="flex justify-between z-40 items-center w-full h-13 relative">
         <div className="logo h-12">
           {/* <img src={svg} alt="" className='w-full h-full object-cover'/> */}
           <h1 className="text-[30px] font-bold text-main_blue">e-invest</h1>
         </div>
         <div className="links lg:hidden flex items-center justify-between gap-3 h-full w-auto">
-          <a
-            href="/Einstein-Investments/"
-            className="font-normal text-[#797979] hover:text-primary p-10"
-          >
-            Home
-          </a>
-          <a
-            href="/Einstein-Investments/plans"
-            className="font-normal text-[#797979] hover:text-primary p-10"
-          >
-            Our Plans
-          </a>
-          <a
-            href="#"
-            className="font-normal text-[#797979] hover:text-primary p-10"
-          >
-            About Us
-          </a>
-          <a
-            href="#"
-            className="font-normal text-[#797979] hover:text-primary p-10"
-          >
-            Contacts
-          </a>
+          <MenuLinks href="/Einstein-Investments/">Home</MenuLinks>
+          <MenuLinks href="/Einstein-Investments/plans">Our Plans</MenuLinks>
+          <MenuLinks href="#">About Us</MenuLinks>
+          <MenuLinks href="#">Contact Us</MenuLinks>
         </div>
         <div className="get-started lg:hidden flex items-center gap-[10px] justify-center p-[5px]">
           <a
@@ -79,6 +82,56 @@ const Header = () => {
     </motion.header>
   );
 };
+
+const MenuLinks = ({children, href}) => {
+  const [scale, setScale] = useState(false)
+  
+  const target = useRef(null)
+  
+  useEffect(() => {
+    const mouseOver = () => {
+      setScale(true)
+      console.log(target.current);
+    }
+
+    const mouseOut = () => {
+      setScale(false)
+      console.log(target.current);
+    }
+
+    target.current.addEventListener("mouseover", mouseOver)
+    target.current.addEventListener("mouseout", mouseOut)
+
+    return () => {
+      target.current.removeEventListener("mouseover", mouseOver)
+      target.current.removeEventListener("mouseout", mouseOut)
+    }
+  },[scale])
+
+  const variants = {
+    show: {
+      scaleX: 1
+    },
+    close: {
+      scaleX: 0
+    }
+  } 
+  return (
+    <a
+    href={href}
+    ref={target}
+    className="font-normal relative group text-[#797979] hover:text-primary p-10"
+  >
+    {children}
+    <motion.span
+    variants={variants}
+    initial={"close"}
+    animate={scale ? "show" : "close"}
+    transition={{ type: "spring"}} 
+    className="absolute bg-main_blue bottom-0 origin-left left-0 h-[3px] w-full rounded-full"/>
+  </a>
+  )
+ }
 
 const Nav = {
   open: {

@@ -3,6 +3,8 @@ import { FaAngleRight, FaCog } from "react-icons/fa"
 import { motion, AnimatePresence, easeInOut } from 'framer-motion'
 import {Link} from 'react-router-dom'
 
+//cubic-bezier(0.4, 0, 0.2, 1)
+
 const side_links = [
   [{
     id: 1,
@@ -183,10 +185,14 @@ const showHide = {
     const [tab, setTab] = useState([{id: 1, id2: 1}])
 
     const [navLinks, setNavLinks] = useState(side_links)
+    const [breakpoint, setBreakpoint] = useState(window.innerWidth)
     
-    // useEffect(() => {
-      
-    // })
+    useEffect(() => {
+      const allwidth = () => {
+          setBreakpoint(window.innerWidth)
+      }
+      window.addEventListener('resize', allwidth)
+  },[breakpoint])
 
     const menuLogic = (id, arrIndex) => {
       const targetArr = arrIndex
@@ -206,6 +212,8 @@ const showHide = {
      
       if(target === 5){
         setNavLinks(updatedSideNavLinks)
+      }else{
+        breakpoint < 1024 && setOpenNav(false)
       }
 
       const navROW1 = navLinks[targetArr].filter(link => link.id === id)
@@ -245,8 +253,10 @@ const showHide = {
       <ul className="w-full flex flex-col items-start justify-evenly gap-[5px]">
       {navLinks[0].map(link => {
         return (
+          //${link.id2 === tab[0].id2 ? "bg-[#292929] text-[#fff] hover:bg-primary hover:text-white" : 'hover:text-[#1b1b1b]'} hover:bg-[#ebebeb]  active:bg-[#f0f0f0] 
            <li key={link.id} className="w-full relative">
-            <Link to={link.href} onClick={() => handleSubMenu(link.id, link.arr)} className={`relative text-[14px] cursor-pointer hover:bg-[#ebebeb] ${link.id2 === tab[0].id2 ? "bg-[#3f3f3f] text-[#fff] hover:bg-primary hover:text-white" : 'hover:text-[#1b1b1b]'}  active:bg-[#f0f0f0] rounded-[10px] w-full text-[#797979] h-auto p-[10px] flex items-center justify-start gap-[10px]`}>
+            {link.id2 === tab[0].id2 && <motion.div transition={{type: "spring"}} layoutId="active" className="w-full absolute h-[41px] bg-[#292929] rounded-[10px]"/>}
+            <Link to={link.href} onClick={() => handleSubMenu(link.id, link.arr)} className={`relative text-[14px] cursor-pointer transition- duration-500 rounded-[10px] w-full ${link.id2 === tab[0].id2 ? "text-[#fff]" : "hover:text-primary"}  text-[#797979] h-auto p-[10px] flex items-center justify-start gap-[10px]`}>
              {link.id2 === tab[0].id2 && 
              <motion.span
              style={{transformOrigin: 'bottom'}}
