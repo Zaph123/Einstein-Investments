@@ -6,7 +6,7 @@ import { FaArrowRight } from 'react-icons/fa';
   const Hero = () => {
     return (
       <section className='relative hero w-full h-auto mt-[40px] p-4 flex justify-center items-center py-[50px]'>
-        <div className='w-full h-auto flex items-center flex-wrap justify-evenly gap-[30px] z-10 py-[50px]'>
+        <div className='w-full h-auto flex items-center flex-wrap justify-center gap-[30px] z-10 py-[50px]'>
            <div className="w-full max-w-[600px] flex flex-col items-start xl:items-center justify-center gap-4">
             <div className='flex flex-col items-start xl:items-center justify-center gap-4'>
               <h3 className='bg-[#e0eaff] px-3 rounded-xl text-[0.8rem] text-[#265ed7] '>🔥 Trusted by Millions</h3>

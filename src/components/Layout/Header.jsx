@@ -102,10 +102,10 @@ const MenuLinks = ({children, href}) => {
     target.current.addEventListener("mouseover", mouseOver)
     target.current.addEventListener("mouseout", mouseOut)
 
-    return () => {
-      target.current.removeEventListener("mouseover", mouseOver)
-      target.current.removeEventListener("mouseout", mouseOut)
-    }
+    // return () => {
+    //   target.current.removeEventListener("mouseover", mouseOver)
+    //   target.current.removeEventListener("mouseout", mouseOut)
+    // }
   },[scale])
 
   const variants = {

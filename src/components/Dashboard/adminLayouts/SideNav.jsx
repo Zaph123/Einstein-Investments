@@ -249,20 +249,20 @@ const showHide = {
        <FaAngleRight className="w-full"/></div>
      </div> */}
        <span className="border-t-2 border-[#f5f5f5] w-full"/>
-      <div className="flex flex-col items-start gap-50 justify-between h-full w-full">
+      <div className="flex flex-col items-start gap-50 justify-start h-full w-full">
       <ul className="w-full flex flex-col items-start justify-evenly gap-[5px]">
       {navLinks[0].map(link => {
         return (
           //${link.id2 === tab[0].id2 ? "bg-[#292929] text-[#fff] hover:bg-primary hover:text-white" : 'hover:text-[#1b1b1b]'} hover:bg-[#ebebeb]  active:bg-[#f0f0f0] 
            <li key={link.id} className="w-full relative">
-            {link.id2 === tab[0].id2 && <motion.div transition={{type: "spring"}} layoutId="active" className="w-full absolute h-[41px] bg-[#292929] rounded-[10px]"/>}
+            {link.id2 === tab[0].id2 && <motion.div transition={{duration: .25}} layoutId="active" className="w-full absolute h-[41px] bg-[#292929] rounded-[10px]"/>}
             <Link to={link.href} onClick={() => handleSubMenu(link.id, link.arr)} className={`relative text-[14px] cursor-pointer transition- duration-500 rounded-[10px] w-full ${link.id2 === tab[0].id2 ? "text-[#fff]" : "hover:text-primary"}  text-[#797979] h-auto p-[10px] flex items-center justify-start gap-[10px]`}>
              {link.id2 === tab[0].id2 && 
              <motion.span
              style={{transformOrigin: 'bottom'}}
               className="absolute h-[15px] w-[3px] bg-main_blue left-1 rounded-full top-2/4 -translate-y-2/4"
               initial={{
-               scaleY: .5
+               scaleY: .5,
               }}
               animate={{
                scaleY: 1,
