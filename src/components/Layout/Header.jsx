@@ -173,7 +173,7 @@ const SideHeaderNav = ({ openNav }) => {
           Home
         </a>
         <a
-          href="#"
+          href="/Einstein-Investments/plans"
           className="font-normal text-[#797979] hover:text-primary p-10 w-full rounded-xl hover:bg-[#f8f8f8] openNav:bg-[#f1f1f1]"
         >
           Our Plans
