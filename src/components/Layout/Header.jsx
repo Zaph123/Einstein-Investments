@@ -70,7 +70,7 @@ const Header = () => {
           </a>
           <a
             href="/Einstein-Investments/plans"
-            className="flex items-center justify-center py-[10px] bg-[#0c0c0c] hover:bg-primary openNav:bg-[#0c0c0c] text-white rounded-[50px] shadow-[0_10px_10px_rgba(0,0,0,0.2)] border-[2px] border-[#0c0c0c] px-[20px] cursor-pointer"
+            className="flex items-center justify-center py-[10px] bg-[#0c0c0c] hover:bg-[#131313] text-white rounded-[50px] shadow-[0_10px_10px_rgba(0,0,0,0.2)] border-[2px] border-[#0c0c0c] px-[20px] cursor-pointer"
           >
             Get Started
           </a>
@@ -91,12 +91,10 @@ const MenuLinks = ({children, href}) => {
   useEffect(() => {
     const mouseOver = () => {
       setScale(true)
-      console.log(target.current);
     }
 
     const mouseOut = () => {
       setScale(false)
-      console.log(target.current);
     }
 
     target.current.addEventListener("mouseover", mouseOver)
@@ -120,6 +118,7 @@ const MenuLinks = ({children, href}) => {
     <a
     href={href}
     ref={target}
+    onClick={() => {document.getElementById("id")?.scrollIntoView({behavior: "smooth"})}}
     className="font-normal relative group text-[#797979] hover:text-primary p-10"
   >
     {children}

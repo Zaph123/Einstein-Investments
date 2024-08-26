@@ -1,18 +1,30 @@
 import userProfileImg from '../../../assets/images/profile-1.png'
-import { useState } from 'react';
-import { FaSearch } from 'react-icons/fa'
+import { useState, useContext } from 'react';
+import { FaSearch, FaRegUser } from 'react-icons/fa'
+import { TbLogout, TbSettings } from 'react-icons/tb'
+import {AiOutlineSetting} from 'react-icons/ai'
+import { CiSaveUp2 } from 'react-icons/ci'
+import { MdOutlineHelpOutline } from 'react-icons/md'
+import { FiActivity } from 'react-icons/fi'
 import { motion, AnimatePresence, backInOut } from 'framer-motion';
 import HamburgerMenu from '../../Layout/HamburgerMenu';
 import { NavMenu } from './SideNav'
-import { FaAngleRight, FaCog, FaBell } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { FaAngleRight, FaCog, FaBell, FaUser } from 'react-icons/fa';
+import { InvestmentContext } from '../../../context/InvestmentContext';
 
 const TopNav = () => {
+  const { userData, dashboardSectionName } = useContext(InvestmentContext)
+
   const [openNav, setOpenNav] = useState(false);
+  const [openProfile, setOpenProfile] = useState(false)
 
   const handleOpenNav = () => {
     setOpenNav(!openNav);
   };
+
+  const handleOpenProfile = () => {
+    setOpenProfile(!openProfile)
+  }
 
     return (
       <section className="w-full h-auto bg-white relative">
@@ -22,13 +34,14 @@ const TopNav = () => {
           </path></svg> */}
 
           <HamburgerMenu handleOpenNav={handleOpenNav} openNav={openNav}/>
-          <h1 className='text-[1.8rem] text-[#252525] font-bold'>Dashboard</h1>
+          {/* <h1 className='text-[1.8rem] text-[#252525] font-bold'>{dashboardSectionName}</h1> */}
+          <h1 className="font-medium text-[1.02rem] text-[#727272] shrink-0">Welcome Sabrina!👏</h1>
 
           <div className='w-full max-w-[450px] h-auto flex items-center justify-between gap-[20px]'>
             <form action="#" method="post" className='h-auto lg:hidden w-full'>
               <label className='relative bg-[#f1f1f1] rounded-full p-10 h-[45px] w-full flex items-center justify-center'>
                 <div className='w-auto flex item-center justify-start'>
-                    <FaSearch className='text-[#585858]'/>
+                    <FaSearch className='text-[#d7d7d7]'/>
                 </div>
                 <input type="search" name="search" placeholder='Search here...' className='text-[#000] p-10 focus:outline-none rounded-full border-none bg-[#f1f1f1] w-full' />
               </label>
@@ -46,20 +59,27 @@ const TopNav = () => {
             </div>
           </div> */}
 
-         <div className='cursor-pointer transition-colors duration-300 px-1 border-[#fbfbfb] lg:border-none lg:hover:bg-none border-2 rounded-xl hover:bg-[#fbfbfb] relative flex py-10 w-full md:rounded-full md:max-w-max max-w-[250px] items-center justify-start gap-[10px]'>
+         <motion.div  
+           whileTap={{
+             scale: .95
+            }} 
+           onClick={handleOpenProfile} className='cursor-pointer transition-colors duration-300 px-1 border-[#fbfbfb] lg:border-none lg:hover:bg-none border-2 rounded-xl hover:bg-[#fbfbfb] relative flex py-10 w-full md:rounded-full md:max-w-max max-w-[250px] items-center justify-start gap-[10px]'>
             <div className='w-[40px] h-[40px] group cursor-pointer rounded-full overflow-hidden flex justify-center items-center'>
               <img src={userProfileImg} alt="profile image" className='group-hover:scale-110 transition-all duration-300 '/>
             </div>
             <div className='md:hidden'>
-                <h1 className='text-[#0d0d0d] font-bold text-[0.9rem]'>Sabrina Carpenter</h1>
+                <h1 className='text-[#0d0d0d] font-bold text-[0.9rem]'>{userData[0]?.name}</h1>
                 <h3 className='text-[0.8rem]'>Bank Accountant</h3>
             </div>
            <div className="absolute md:hidden right-1 w-[30px] h-[30px] transition-colors duration-300 flex items-center justify-center rounded-full text-[#797979] hover:bg-[#f1f1f1]">
-         <FaAngleRight className="w-full"/>
+            <FaAngleRight className="w-full"/>
          </div>
-        </div>
+         <AnimatePresence>
+          {openProfile && <ProfileInfo userData={userData}/>}
+         </AnimatePresence>
+        </motion.div>
         </nav>
-        <SideHeaderNav openNav={openNav} setOpenNav={setOpenNav}/>
+           <SideHeaderNav openNav={openNav} setOpenNav={setOpenNav}/>
       </section>
     )
   }
@@ -93,7 +113,7 @@ const TopNav = () => {
         variants={Nav}
         initial="close"
         animate={openNav ? "open" : "close"}
-        className="lg:flex flex-col items-center bottom-0 justify-start top-[60px] gap-[50px] px-10 pb-10 hidden fixed w-full left-0 h-[90vh] z-10 bg-white"
+        className="lg:flex flex-col items-center bottom-0 justify-start top-[60px] gap-[50px] px-10 pb-10 hidden fixed w-full left-0 h-screen z-10 bg-white"
       >
          <section id="SideNav" className="w-full h-full bg-[#fff] overflow-y-auto">
         <NavMenu setOpenNav={setOpenNav}/>
@@ -101,4 +121,80 @@ const TopNav = () => {
       </motion.div>
     );
   };
+
+  const ProfileInfo = ({userData}) => {
+    return (
+      <motion.div
+      initial={{
+        y: -50,
+        opacity: 0
+      }}
+      animate={{
+        y: 0,
+        opacity: 1
+      }}
+      transition={{
+        duration: ".3",
+        type: "spring",
+        ease: "backInOut",
+      }}
+      exit={{
+        y: -50,
+        opacity: 0
+      }}
+      className='z-50 flex flex-col items-start justify-start absolute gap-10 top-[75px] shadow-lg p-10 right-10 w-[300px] h-auto rounded-[10px] bg-white'>
+        <div className='flex items-center justify-start w-full gap-10'>
+          <div className='w-[40px] h-[40px] group cursor-pointer rounded-full overflow-hidden flex justify-center items-center'>
+              <img src={userProfileImg} alt="profile image" className='group-hover:scale-110 transition-all duration-300 '/>
+            </div>
+            <div className=''>
+                <h1 className='text-[#0d0d0d] font-bold text-[0.9rem]'>Einstein Bassey</h1>
+                <h3 className='text-[0.75rem]'>Basic Plan</h3>
+            </div>
+        </div>
+        <span className='inline-block w-full bg-[#f1f1f1] h-[2px]'/>
+        <div className='flex flex-col items-start justify-center w-full'>
+          <div className='w-full h-auto'>
+            <a href="#" className='flex items-center justify-start text-[#292929] gap-10 text-[.85rem] py-[7px] px-10 rounded-[10px] hover:bg-[#f1f1f1] w-full font-bold'>
+              <FaRegUser className="text-[1.1rem] text-[#292929]"/>
+              Profile
+              </a>
+            </div>
+          <div className='w-full h-auto'>
+            <a href="#" className='flex items-center justify-start text-[#292929] gap-10 text-[.85rem] py-[7px] px-10 rounded-[10px] hover:bg-[#f1f1f1] w-full font-bold'>
+            <FiActivity className="text-[1.1rem] text-[#292929]"/>
+              Activitiy
+              </a>
+            </div>
+          <div className='w-full h-auto'>
+            <a href="#" className='flex items-center justify-start text-[#292929] gap-10 text-[.85rem] py-[7px] px-10 rounded-[10px] hover:bg-[#f1f1f1] w-full font-bold'>
+             <AiOutlineSetting className="text-[1.1rem] text-[#292929]"/>
+              Account settings
+            </a>
+          </div>
+          <div className='w-full h-auto'>
+            <a href="#" className='flex items-center justify-start text-[#292929] gap-10 text-[.85rem] py-[7px] px-10 rounded-[10px] hover:bg-[#f1f1f1] w-full font-bold'>
+            <MdOutlineHelpOutline className="text-[1.1rem] text-[#292929]"/>
+             Help
+            </a>
+          </div>
+        </div>
+        <span className='inline-block w-full bg-[#f1f1f1] h-[2px]'/>
+        <div className='flex flex-col items-start justify-center w-full'>
+          <div className='w-full h-auto'>
+            <a href="#" className='flex items-center justify-start text-[#292929] gap-10 text-[.85rem] py-[7px] px-10 rounded-[10px] hover:bg-[#f1f1f1] w-full font-bold'>
+            <CiSaveUp2 strokeWidth={1} className="text-[1.1rem] text-[#292929]"/>
+              Upgrade Plan
+              </a>
+              </div>
+          <div className='w-full h-auto'>
+            <a href="#" className='flex items-center justify-start text-[#292929] gap-10 text-[.85rem] py-[7px] px-10 rounded-[10px] hover:bg-[#f1f1f1] w-full font-bold'>
+            <TbLogout className="text-[1.1rem] text-[#292929]"/>
+              Logout
+              </a>
+              </div>
+        </div>
+      </motion.div>
+    )
+  }
   export default TopNav;

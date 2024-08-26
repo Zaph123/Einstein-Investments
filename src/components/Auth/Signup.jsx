@@ -1,33 +1,22 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { useForm } from "react-hook-form"
 import * as yup from 'yup'
 import { yupResolver } from "@hookform/resolvers/yup"
 import { FaUser, FaEye, FaEyeSlash, FaLock, FaEnvelope } from "react-icons/fa"
 import useLocalStorage from '../../hooks/useLocalStorage'
+import { InvestmentContext } from "../../context/InvestmentContext"
+import { useNavigate } from 'react-router-dom';
 
 
- const  Signup = () => {
+const  Signup = () => {
+    const { setUserData } = useContext(InvestmentContext)
+
     const [passwd, setPasswd] = useState("")
     const [changeType, setChangeType] = useState("password")
     const [showPasswd, setShowPasswd] = useState(false)
     const [users, setUsers] = useState([])
     const {setItem} = useLocalStorage("data")
 
-    // const todo = {
-    //   one: {
-    //     value: "One"
-    //   },
-    //   two: {
-    //     value: "Two"
-    //   }
-    // }
-
-    // const fetch = () => {
-    //   fetch(todo)
-    //   .then(res => console.log(res))
-    // }
-    
-    // useEffect(fetch)
     const handleShowPasswd = () => {
         console.log(passwd);
      if(changeType === "password"){
@@ -38,6 +27,8 @@ import useLocalStorage from '../../hooks/useLocalStorage'
         setShowPasswd(false)
       }
     }
+
+    const navigate = useNavigate()
 
     const schema = yup.object().shape({
       fullName: yup.string().required("Please input your Full Name"),
@@ -68,21 +59,15 @@ import useLocalStorage from '../../hooks/useLocalStorage'
         }
 
          setUsers([...users, usersData])
-         console.log(users)
+         setUserData([...users, usersData])
+        //  console.log(users)
+        navigate("/auth/login")
      }
      
      useEffect(() => {
         setItem(users)
-
       }, [users])
-      
-      useEffect(() => {if(isLoading){
-        setTimeout(() => {
-          alert("Done.")
-        }, 1000)
-       
-      }
-    }, [isLoading])
+    
      
   return (
     <section className="w-full flex flex-col items-center justify-center">
@@ -213,7 +198,7 @@ import useLocalStorage from '../../hooks/useLocalStorage'
                          </button>
                     </div>
                     <div className='px-[10px] flex items-center justify-center w-full text-[.9rem]'>
-                        <p className='text-[#585858]'>Already have an Account? <a href="/Einstein-Investments/auth/login" className='text-[#6366f1] hover:text-[#3033e7]'>Login here</a></p>
+                        <p className='text-[#585858]'>Already have an Account? <a href="/Einstein-Investments/auth/login" className='hover:text-[#6366f1] text-[#3033e7] hover:underline'>Login here</a></p>
                     </div>
                 </form>
             </div>

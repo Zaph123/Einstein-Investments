@@ -1,12 +1,28 @@
-import finance from '../assets/images/finance.jpg'
+import finance from '../assets/images/invest4.jpg'
 import { FaArrowRight } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
  const Access = () => {
     return (
-        <section className="w-full h-auto py-[50px] bg-[#131313]">
-            <div className='w-full flex items-center h-auto p-[10px] justify-around gap-[60px] flex-wrap'>
-                <div className="shadow-2xl col-2 w-full max-w-[600px] lg:order-1">
-                  <img src={finance} alt="access image" className='w-full rounded-[10px] h-full'/>
+        <motion.section
+         initial={{y: 50, opacity: 0}}
+         whileInView={{
+          y: -50,
+          opacity: 1
+        }} 
+       
+        transition={{
+          duration: .75,
+          ease: "easeInOut",
+          type: "spring",
+          stiffness: 50,
+          damping: 10
+        }}
+        id='id'
+        className="w-full relative z-10 h-auto py-[50px] bg-[rgb(19,19,19)]">
+            <div className='w-full flex items-center min-h-screen p-[10px] justify-around gap-[60px] flex-wrap'>
+                <div className="shadow-2xl col-2 w-full max-w-[550px] h-[600px] lg:order-1">
+                  <img src={finance} alt="access image" className='w-full rounded-[10px] h-full object-cover'/>
                 </div>
                 <div className='flex flex-col gap-[30px] items-start w-full max-w-[530px] lg:max-w-[700px]'>
                   <h1 className="font-bold text-[70px] w-full max-w-[600px] leading-[90px] sm:text-[3rem] sm:leading-[70px] text-white lg:text-center lg:mx-auto">Get Access to the right Investments</h1>
@@ -14,7 +30,7 @@ import { FaArrowRight } from 'react-icons/fa';
                   <a href="#" className='border-2 border-white rounded-xl py-10 px-[15px] lg:mx-auto hover:text-[#e7efff] text-[#e7efff] flex items-center justify-evenly gap-2 w-auto text-[16px] hover:underline'>Learn more <FaArrowRight className='' /></a>
                 </div>
             </div>
-        </section>
+        </motion.section>
     )
  }
 

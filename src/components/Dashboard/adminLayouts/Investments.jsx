@@ -1,11 +1,10 @@
- import { useEffect, useState } from "react"
+ import { useContext, useEffect, useState } from "react"
  import { motion, AnimatePresence } from "framer-motion"
- import { Navigate, useNavigate } from "react-router-dom"
+ import { useNavigate } from "react-router-dom"
  import InvestmentLogs from "./all-logs/InvestmentLogs"
  import { FaCheckCircle } from "react-icons/fa"
+ import { InvestmentContext } from "../../../context/InvestmentContext"
 //#3F75FB
-
-const LOGGED_IN = true
 
 const Btn =[ 
 {
@@ -22,18 +21,20 @@ const Btn =[
 
 
 const Investments = () => {
+  const { isAuthorized } = useContext(InvestmentContext) 
   const OVERFLOW = "scroll"
+
   return (
     <AnimatePresence>
     <div className={`w-full h-full overflow-scroll py-[30px] p-10 flex flex-col items-center bg-[#fbfbfb] justify-start gap-[30px]`}>
-      <ClientPlans OVERFLOW={OVERFLOW} LOGGED_IN={LOGGED_IN}/>
+      <ClientPlans OVERFLOW={OVERFLOW} isAuthorized={isAuthorized}/>
       <InvestmentLogs />
     </div>
     </AnimatePresence>
   )
 }
 
-export const ClientPlans = ({LOGGED_IN}) => {
+export const ClientPlans = ({isAuthorized}) => {
   const [planState, setPlanState] = useState(true)
   const [btnState, setBtnState] = useState(Btn[0].id)
   const [planDetails, setPlanDetails] = useState([])
@@ -47,8 +48,8 @@ export const ClientPlans = ({LOGGED_IN}) => {
   return (
     // <div className="w-full h-full p-[30px] overflow-auto bg-[#f1f1f1]">
     <>
-    <div className="flex flex-col items-center justify-center">
-      <h1 className="text-[40px] font-bold text-center">Choose your right Plan!</h1>
+    <div className="flex flex-col items-center justify-center relative">
+      <h1 className="text-[3.5rem] font-bold text-center md:text-[2.9rem]">Choose your right Plan!</h1>
       <p className="text-[0.95rem] font-normal text-[#797979] text-center">Select from best plans, ensuring a perfect match</p>  
     </div>
     <div className="flex items-center justify-center gap-1 p-10">
@@ -75,14 +76,16 @@ export const ClientPlans = ({LOGGED_IN}) => {
       {/* <p className="text-[0.9rem] text-[#797979]">Packages</p> */}
     </div>
     
+    <AnimatePresence>
     {planState
-     ? <MonthlyPlans setIsLoading={setIsLoading} isLoading={isLoading} setPlanDetails={setPlanDetails} navigate={navigate} LOGGED_IN={LOGGED_IN}/>
-     : <AnnuallyPlans setIsLoading={setIsLoading} isLoading={isLoading} setPlanDetails={setPlanDetails} navigate={navigate} LOGGED_IN={LOGGED_IN}/>
+     ? <MonthlyPlans setIsLoading={setIsLoading} isLoading={isLoading} setPlanDetails={setPlanDetails} navigate={navigate} isAuthorized={isAuthorized}/>
+     : <AnnuallyPlans setIsLoading={setIsLoading} isLoading={isLoading} setPlanDetails={setPlanDetails} navigate={navigate} isAuthorized={isAuthorized}/>
     }
+    </AnimatePresence>
   </>
-    // </div>
   )
 }
+
  const Container = {
   hidden: {
     y: 50,
@@ -124,7 +127,7 @@ export const ClientPlans = ({LOGGED_IN}) => {
     opacity: 0
   }
  }
- const MonthlyPlans = ({setPlanDetails, navigate, LOGGED_IN, setIsLoading, isLoading}) => {
+ const MonthlyPlans = ({setPlanDetails, navigate, isAuthorized, setIsLoading, isLoading}) => {
   const [id, setId] = useState('')
 
   const plans = [
@@ -178,7 +181,7 @@ export const ClientPlans = ({LOGGED_IN}) => {
     }
 
     setPlanDetails([details])
-    !LOGGED_IN ? navigate("/auth/login") : navigate("/dashboard/deposit")
+    !isAuthorized ? navigate("/auth/login") : navigate("/dashboard/deposit")
   }
 
   return (
@@ -192,7 +195,7 @@ export const ClientPlans = ({LOGGED_IN}) => {
     // }}
     exit={'exit'}
     key='monthly'
-    className="w-full flex rounded-xl lg:flex-wrap items-center justify-evenly gap-[20px] bg-white p-[10px]">
+    className="w-full relative flex rounded-xl lg:flex-wrap items-center justify-evenly gap-[20px] bg-white p-[10px]">
     {plans.map(plan => {
       return (
         <motion.div key={plan.id} variants={item} className={`w-full ${plan.id === 2 ? "bg-[#292929] border-[#0d0d0d]" : "bg-[#f1f1f1] border-[#ddd]"} rounded-xl max-w-[400px] h-auto p-10 border-2`}>
@@ -227,7 +230,7 @@ export const ClientPlans = ({LOGGED_IN}) => {
   </motion.div>
   )
  }
- const AnnuallyPlans = ({setPlanDetails, navigate, LOGGED_IN, setIsLoading, isLoading}) => {
+ const AnnuallyPlans = ({setPlanDetails, navigate, isAuthorized, setIsLoading, isLoading}) => {
   const [id, setId] = useState('')
 
   const plans = [
@@ -280,7 +283,7 @@ export const ClientPlans = ({LOGGED_IN}) => {
     }
 
     setPlanDetails([details])
-    !LOGGED_IN ? navigate("/auth/login") : navigate("/dashboard/deposit")
+    !isAuthorized ? navigate("/auth/login") : navigate("/dashboard/deposit")
   }
 
   return (
@@ -290,10 +293,10 @@ export const ClientPlans = ({LOGGED_IN}) => {
     animate={'show'}
     exit={'exit'} 
     key='annually'
-    className="w-full flex rounded-xl lg:flex-wrap items-center justify-evenly gap-[20px] bg-white p-[20px]">
+    className="w-full relative flex rounded-xl lg:flex-wrap items-center justify-evenly gap-[20px] bg-white p-[10px]">
     {plans.map(plan => {
       return (
-        <motion.div key={plan.id} variants={item} className={`w-full ${plan.id === 2 ? "bg-[#292929] border-[#000]" : "bg-[#f1f1f1] border-[#ddd]"} rounded-xl max-w-[350px] h-auto p-10 border-2`}>
+        <motion.div key={plan.id} variants={item} className={`w-full ${plan.id === 2 ? "bg-[#292929] border-[#0d0d0d]" : "bg-[#f1f1f1] border-[#ddd]"} rounded-xl max-w-[400px] h-auto p-10 border-2`}>
         <div className="w-full h-full flex flex-col items-start justify-start py-10 px-[25px] gap-[20px]">
         <h2 className={`w-full flex items-center justify-between font-bold text-[1.5] ${plan.id === 2 ? "text-white" : "text-[#292929]"}`}>{plan.planType} {plan.id === 2 && <span className="font-normal py-1 px-3 rounded-full bg-[#5569c7]">🔥 Popular</span>}</h2>
           <h1 className="flex items-end justify-center border-b-2 border-[#ddd]">

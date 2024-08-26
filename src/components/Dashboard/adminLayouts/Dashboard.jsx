@@ -1,11 +1,13 @@
 import { FaArrowLeft } from "react-icons/fa"
 
 const Dashboard = () => {
+  //#d7d7d7
+  //#858282
   return (
-    <section className="w-full h-full py-[30px] px-10 overflow-auto">
-        <div className="w-full h-auto py-10 flex flex-col items-start overflow-x-scroll">
-          <h1 className="font-normal text-[1.02rem]">Hello and Welcome Sabrina!👏</h1>
-           <div className="w-full h-auto flex items-center lg:flex-wrap justify-around gap-3 py-[20px]">
+    <section className="w-full h-full py-[20px] px-10 overflow-auto">
+          <h1 className="text-[1.8rem] text-[rgb(37,37,37)] font-bold">Dashboard</h1>
+        <div className="w-full h-auto p-[20px] flex bg-[#ecebeb] rounded-[10px] flex-col items-start overflow-x-auto">
+           <div className="w-full h-auto flex items-center lg:flex-wrap justify-around gap-3">
             <div className="w-full max-w-[500px] bg-primary p-[30px] h-[200px] rounded-xl shadow-md">
               <h1 className="text-[1.01rem] text-white font-bold">Total Investments</h1>
               <h2 className="text-[0.95rem] text-[#bdbdbd]">August 2024</h2>

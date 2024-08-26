@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
+import img1 from '../../assets/images/doodle-1.gif'
 
 const FAQS = () => {
   return (
-    <div className='w-full h-auto mt-[50px]'>
-     <div className='w-full h-auto flex flex-col items-center justify-start'>
+    <div className='relative w-full h-auto mt-[50px] overflow-hidden'>
+        <img className='absolute -right-[150px] md:scale-[.5] -top-[50px] -z-1 rotate-[45deg]' src={img1} alt="" />
+     <div className='relative w-full h-auto flex flex-col items-center justify-start'>
       <h1 className='text-[3.5rem]'>FAQs</h1>
       <div className='flex flex-col items-center justify-center w-full h-auto p-[20px] divide-y-2 divide-[#f2f2f2]'>
         <Question question="How can i start investing">
@@ -61,7 +63,20 @@ const Question = ({children, question}) => {
         }
     } 
     return (
-        <div onClick={handleShowAnswer} className='w-full active:bg-[#fbfbfb] flex flex-col items-center px-10 justify-start max-w-[1000px] h-auto'>
+        <motion.div
+        initial={{
+            y: 100,
+            opacity: 1
+        }}
+        whileInView={{
+            y: 0,
+            opacity: 1
+        }}
+        transition={{
+            duration: 1.2,
+            type: "spring"
+        }}
+        onClick={handleShowAnswer} className='w-full active:bg-[#fbfbfb] flex flex-col items-center px-10 justify-start max-w-[1000px] h-auto'>
             <div className='w-full flex items-center justify-between gap-[30px] h-[100px] cursor-pointer'>
             <p className='text-[#797979] text-[1rem] md:text[.9rem]'>
             {question}
@@ -81,7 +96,7 @@ const Question = ({children, question}) => {
                 {children}
                </div>
             </motion.div>
-        </div>
+        </motion.div>
     )
 }
 

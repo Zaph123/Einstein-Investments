@@ -1,13 +1,17 @@
-import { FaUser, FaEye, FaEyeSlash, FaEnvelope } from 'react-icons/fa';
-import { useState, useEffect } from 'react';
+import { FaUser, FaEye, FaEyeSlash, FaEnvelope, } from 'react-icons/fa';
+import { FaCircleExclamation } from 'react-icons/fa6'
+import { useState, useEffect, useContext } from 'react';
 import { useForm } from 'react-hook-form'
 import {yupResolver} from '@hookform/resolvers/yup'
 import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup'
 import useLocalStorage from '../../hooks/useLocalStorage';
 // import login_img from '../../assets/images/man-with-money.jpg'
+import { InvestmentContext } from '../../context/InvestmentContext';
 
  const Login = () => {
+    const {userData, setIsAuthorized} = useContext(InvestmentContext)
+
     const [showPasswd, setShowPasswd] = useState(false)
     const [changeType, setChangeType] = useState("password")
     const [passwd, setPasswd] = useState("")
@@ -28,23 +32,22 @@ import useLocalStorage from '../../hooks/useLocalStorage';
         try {
             await new Promise((resolve) => setTimeout(resolve, 1000))
              console.log(data)
-             const details = {
+               const details = {
                  email: data.email,
                  password: data.password
                 }
                 const usersDetails = getItem()
-                const search = usersDetails.find(x => x.email === details.email)
-            
-                if(search){
-                    alert("found 1")
-                    throw new Error()
-                }
-                console.log(usersDetails);
+                const emailValid = userData.find(x => x.email === details.email)
+                const passwordValid = userData.find(x => x.password === details.password)
+                console.log(userData);
                 
+                if(!emailValid || !passwordValid) throw new Error()
+                    
+                setIsAuthorized(true)    
                 navigate("/dashboard")
             } catch (error) {
                 setError("email", {
-                    message: "This email is already taken"
+                    message: "Incorrect login info"
                 })
         }
     }
@@ -72,11 +75,13 @@ import useLocalStorage from '../../hooks/useLocalStorage';
              <img src={login_img} className='w-full h-full object-cover' alt="man with money" />
            </div> */}
             <div className='w-full flex items-center justify-center'> 
-            <div className="flex flex-col items-center gap-[30px] py-[20px] form-body w-full max-w-[450px] h-auto">
+            <div className="flex flex-col items-center gap-[20px] py-[20px] form-body w-full max-w-[450px] h-auto">
                 <div className='self-start px-[20px]'>
                   <h1 className='text-4xl font-bold text-[#0c0c0c]'>Login</h1>
                   <p className='text-[#999] text-[0.9rem]'>Hi, Welcome back 👏</p>
                 </div> 
+                       {errors.email && <span className='text-red-500 text-[.9rem] px-[5px] bg-[#ffefef] ring-[1px] ring-[#fbc7c7] border-[1px] rounded-[5px] border-[#f3a9a9] flex items-center justify-center fill-none gap-5'><FaCircleExclamation />{errors.email?.message}</span>}
+                       {errors.password && <span className='text-red-500 text-[.9rem] px-[5px] bg-[#ffefef] ring-[1px] ring-[#fbc7c7] border-[1px] rounded-[5px] border-[#f3a9a9]'>{errors.password?.message}</span>}
                 <form method='post' onSubmit={handleSubmit(onSubmit)} className="inner w-full h-auto p-[10px] flex flex-col items-start justify-center gap-[20px]">
                     <div className="input-box relative input-box w-full h-auto px-[10px] flex flex-col items-start justify-center">
                        <label htmlFor="email" className="flex items-center justify-center gap-2 bg-[#fff] text-[#5b5b5b] pointer-events-none">
@@ -98,7 +103,6 @@ import useLocalStorage from '../../hooks/useLocalStorage';
                                 return true
                          }})}/>
                         </div>
-                        {errors.email && <span className='text-red-500 text-[.9rem]'>{errors.email?.message}</span>}
                     </div>
                     <div className="input-box relative input-box w-full h-auto px-[10px] flex flex-col items-start justify-center">
                         <label htmlFor="passwd" className="flex items-center justify-center gap-2 bg-[#fff] text-[#5b5b5b] pointer-events-none">
@@ -121,14 +125,13 @@ import useLocalStorage from '../../hooks/useLocalStorage';
                         : <FaEyeSlash onClick={handleShowPasswd} className='absolute top-2/4 -translate-y-2/4 right-[30px] cursor-pointer text-[#858585]'/>
                         }
                         </div>
-                        {errors.password && <span className='text-red-500 text-[.9rem]'>{errors.password?.message}</span>}
                     </div>
                     <div className='w-full flex items-center justify-between px-[10px]'>
                         <div className='flex items-center gap-2 text-[#585858] text-[.9rem]'>
                             <input className='w-[15px] h-[15px] outline-none focus:outline-none cursor-pointer' type="checkbox" name="check" id="rememberMe" {...register("check")}/>
                             <label htmlFor="rememberMe">Remember me</label>
                         </div>
-                        <a href="#" className='text-[#6366f1] hover:text-[#3033e7] hover:underline text-[.9rem]'>Forgot password?</a>
+                        <a href="#" className='hover:text-[#6366f1] text-[#3033e7] hover:underline text-[.9rem]'>Forgot password?</a>
                     </div>
                     <div className='w-full h-auto px-[10px] rounded-[10px]'>
                         <button disabled={isSubmitting} type="submit" className='relative disabled:bg-prim_d active:bg-primary text-lg text-white rounded-[10px] w-full h-[45px] bg-primary hover:bg-prim_f flex items-center justify-center'>
@@ -139,7 +142,7 @@ import useLocalStorage from '../../hooks/useLocalStorage';
                          </button>
                     </div>
                     <div className='px-[10px] flex items-center justify-center w-full text-[.9rem]'>
-                        <p className='text-[#585858]'>Not registered yet? <a href="/Einstein-Investments/auth/signup" className='text-[#6366f1] hover:text-[#3033e7] cursor-pointer'>Create an Account</a></p>
+                        <p className='text-[#585858]'>Not registered yet? <a href="/Einstein-Investments/auth/signup" className='hover:text-[#6366f1] text-[#3033e7] hover:underline'>Create an Account</a></p>
                     </div>
                 </form>
             {/* <div className='hover:ring-2 cursor-pointer hover:scale-105 transition-transform duration-300 bg-[#265ed74f] rounded-xl hover:text-[#265ed7] text-[#4570cc]'>

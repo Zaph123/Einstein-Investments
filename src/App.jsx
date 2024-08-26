@@ -14,8 +14,11 @@ import Transfers from './components/Dashboard/adminLayouts/Transfers';
 // import DepositLogs from './components/Dashboard/adminLayouts/logs/DepositLogs';
 // import WithdrawLogs from './components/Dashboard/adminLayouts/logs/WithdrawLogs';
 import InvestmentPlans from './pages/InvestmentPlans';
+import InvestmentContextProvider from './context/InvestmentContext';
+import { useEffect } from 'react';
 
 import './App.css'
+import  Lenis  from "@studio-freight/lenis";
 
 const PUBLIC_URL = "/Einstein-Investments"
 
@@ -94,11 +97,32 @@ const PUBLIC_URL = "/Einstein-Investments"
  ], {basename: "/Einstein-Investments"})
 
   function LayoutComponent() {
+    useEffect(() => {
+      const lenis = new Lenis({
+        duration: 1.2, // Smooth scroll duration
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Easing function
+        smooth: true, // Enable smooth scrolling
+      });
+      
+      console.log(lenis);
+      
+      function raf(time) {
+        lenis.raf(time);
+        // console.log('Scroll Position:', lenis.scroll);
+        requestAnimationFrame(raf);
+      }
+  
+      requestAnimationFrame(raf);
+  
+      return () => {
+        lenis.destroy();
+      };
+    }, []);
   return(
     
-      <>
+      <InvestmentContextProvider>
         <Outlet/>
-      </>
+      </InvestmentContextProvider>
     
   )
  }
