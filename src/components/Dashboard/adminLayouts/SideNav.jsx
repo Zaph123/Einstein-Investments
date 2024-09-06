@@ -253,7 +253,7 @@ const showHide = {
        <FaAngleRight className="w-full"/></div>
      </div> */}
        <span className="border-t-2 border-[#f5f5f5] w-full"/>
-      <div className="flex flex-col items-start gap-[100px] justify-start h-full w-full">
+      <div className="flex flex-col items-start gap-[50px] justify-start h-full w-full">
       <ul className="w-full flex flex-col items-start justify-evenly gap-[5px]">
       {navLinks[0].map(link => {
         return (

@@ -7,7 +7,7 @@ import useWiggleEffect from '../../hooks/useWiggleEffect'
 
 const Footer = () => {
   return (
-    <footer className="relative w-full overflow-hidden flex mt-[100px] bg-[#fbfbfb] flex-col items-center justify-center py-[30px] px-[20px] gap-[30px]">
+    <footer className="relative w-full overflow-hidden flex mt-[50px] bg-[#fbfbfb] flex-col items-center justify-center py-[30px] px-[20px] gap-[30px]">
       <img src={img1} alt="" className="absolute opacity-50 w-[400px] left-0 -z-1 top-0" />
       <div className="w-full relative bg-white z-10 flex items-start justify-evenly lg:justify-start flex-wrap gap-[20px]">
         <div className="w-full max-w-[400px] flex flex-col items-start justify-center">

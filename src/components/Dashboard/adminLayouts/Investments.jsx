@@ -198,7 +198,7 @@ export const ClientPlans = ({isAuthorized}) => {
     className="w-full relative flex rounded-xl lg:flex-wrap items-center justify-evenly gap-[20px] bg-white p-[10px]">
     {plans.map(plan => {
       return (
-        <motion.div key={plan.id} variants={item} className={`w-full ${plan.id === 2 ? "bg-[#292929] border-[#0d0d0d]" : "bg-[#f1f1f1] border-[#ddd]"} rounded-xl max-w-[400px] h-auto p-10 border-2`}>
+        <motion.div key={plan.id} variants={item} className={`w-full ${plan.id === 2 ? "bg-[#292929] border-[#0d0d0d]" : ""} rounded-xl max-w-[400px] h-auto p-10 border-2`}>
         <div className="w-full h-full flex flex-col items-start justify-start py-10 px-[25px] gap-[20px]">
           <h2 className={`w-full flex items-center justify-between font-bold text-[1.5] ${plan.id === 2 ? "text-white" : "text-[#292929]"}`}>{plan.planType} {plan.id === 2 && <span className="font-normal py-1 px-3 rounded-full bg-[#5569c7]">🔥 Popular</span>}</h2>
           <h1 className="flex items-end justify-center border-b-2 border-[#ddd]">

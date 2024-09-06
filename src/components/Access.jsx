@@ -1,27 +1,41 @@
 import finance from '../assets/images/invest4.jpg'
 import { FaArrowRight } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useInView, useMotionValueEvent, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 
  const Access = () => {
+  const ref = useRef(null)
+
+  const {scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["200px end", 'end start']
+  })
+  const inView = useInView({target: ref})
+  //  useMotionValueEvent(scrollYProgress, "change", l => console.log(l, inView))
+ 
+   const y = useTransform(scrollYProgress, [0, .75], [200, -50])
+
     return (
         <motion.section
-         initial={{y: 50, opacity: 0}}
-         whileInView={{
-          y: -50,
-          opacity: 1
-        }} 
+        //  initial={{y: 50, opacity: 0}}
+        //  whileInView={{
+        //   y: -50,
+        //   opacity: 1
+        // }} 
        
-        transition={{
-          duration: .75,
-          ease: "easeInOut",
-          type: "spring",
-          stiffness: 50,
-          damping: 10
-        }}
+        // transition={{
+        //   duration: .75,
+        //   ease: [0.76, 0, 0.24, 1],
+        //   type: "spring",
+        //   stiffness: 50,
+        //   damping: 10
+        // }}
         id='id'
+        style={{y}}
+        ref={ref}
         className="w-full relative z-10 h-auto py-[50px] bg-[rgb(19,19,19)]">
             <div className='w-full flex items-center min-h-screen p-[10px] justify-around gap-[60px] flex-wrap'>
-                <div className="shadow-2xl col-2 w-full max-w-[550px] h-[600px] lg:order-1">
+                <div className="shadow-2xl col-2 w-full max-w-[550px] h-[550px] lg:order-1">
                   <img src={finance} alt="access image" className='w-full rounded-[10px] h-full object-cover'/>
                 </div>
                 <div className='flex flex-col gap-[30px] items-start w-full max-w-[530px] lg:max-w-[700px]'>

@@ -1,16 +1,17 @@
 import userProfileImg from '../../../assets/images/profile-1.png'
-import { useState, useContext } from 'react';
-import { FaSearch, FaRegUser } from 'react-icons/fa'
+import { useState, useContext, useEffect } from 'react';
+import { FaRegUser } from 'react-icons/fa'
 import { TbLogout, TbSettings } from 'react-icons/tb'
 import {AiOutlineSetting} from 'react-icons/ai'
 import { CiSaveUp2 } from 'react-icons/ci'
 import { MdOutlineHelpOutline } from 'react-icons/md'
 import { FiActivity } from 'react-icons/fi'
-import { motion, AnimatePresence, backInOut } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import HamburgerMenu from '../../Layout/HamburgerMenu';
 import { NavMenu } from './SideNav'
-import { FaAngleRight, FaCog, FaBell, FaUser } from 'react-icons/fa';
+import { FaAngleRight, FaRegBell } from 'react-icons/fa';
 import { InvestmentContext } from '../../../context/InvestmentContext';
+import { CiSearch } from 'react-icons/ci';
 
 const TopNav = () => {
   const { userData, dashboardSectionName } = useContext(InvestmentContext)
@@ -22,9 +23,17 @@ const TopNav = () => {
     setOpenNav(!openNav);
   };
 
-  const handleOpenProfile = () => {
+  const handleOpenProfile = (e) => {
+    console.log(e);
+    
     setOpenProfile(!openProfile)
+    e.stopPropagation()
   }
+
+  useEffect(() => {
+    console.log(openProfile);
+    
+  },[openProfile])
 
     return (
       <section className="w-full h-auto bg-white relative">
@@ -35,19 +44,18 @@ const TopNav = () => {
 
           <HamburgerMenu handleOpenNav={handleOpenNav} openNav={openNav}/>
           {/* <h1 className='text-[1.8rem] text-[#252525] font-bold'>{dashboardSectionName}</h1> */}
-          <h1 className="font-medium text-[1.02rem] text-[#727272] shrink-0">Welcome Sabrina!👏</h1>
+          <h1 className="font-medium text-[1.02rem] text-[#727272] shrink-0">Welcome <span className='font-bold'>{userData[0]?.name}</span>👏</h1>
 
-          <div className='w-full max-w-[450px] h-auto flex items-center justify-between gap-[20px]'>
+          <div className='w-full max-w-[400px] h-auto flex items-center justify-between gap-[20px]'>
             <form action="#" method="post" className='h-auto lg:hidden w-full'>
-              <label className='relative bg-[#f1f1f1] rounded-full p-10 h-[45px] w-full flex items-center justify-center'>
-                <div className='w-auto flex item-center justify-start'>
-                    <FaSearch className='text-[#d7d7d7]'/>
+              <label className='relative bg-[#f1f1f1] rounded-full h-[45px] w-full flex items-center justify-center'>
+                <div className='w-auto absolute left-[10px] flex item-center justify-start'>
+                    <CiSearch className='text-[1.5rem] text-[#0f0f0f]'/>
                 </div>
-                <input type="search" name="search" placeholder='Search here...' className='text-[#000] p-10 focus:outline-none rounded-full border-none bg-[#f1f1f1] w-full' />
+                <input type="search" name="search" placeholder='Search here...' className='text-[#000] pl-[50px] p-10 focus:outline-[1px] focus:outline-[#cfcfcf] focus:outline rounded-full border-none bg-[#f1f1f1] w-full' />
               </label>
             </form>
           </div>
-
 
           {/* <div>
             <div>
@@ -58,18 +66,21 @@ const TopNav = () => {
                 </label>
             </div>
           </div> */}
-
+          <div className='text-[1.3rem] gap-[10px] w-auto flex items-center flex-shrink-0 justify-between cursor-pointer'>
+           <div className='w-[40px] h-[40px] flex items-center justify-center border-[1px] rounded-full border-[#ececec]'>
+             <FaRegBell className='flex-shrink-0'/>
+           </div> 
          <motion.div  
            whileTap={{
              scale: .95
             }} 
-           onClick={handleOpenProfile} className='cursor-pointer transition-colors duration-300 px-1 border-[#fbfbfb] lg:border-none lg:hover:bg-none border-2 rounded-xl hover:bg-[#fbfbfb] relative flex py-10 w-full md:rounded-full md:max-w-max max-w-[250px] items-center justify-start gap-[10px]'>
+           onClick={handleOpenProfile} className='cursor-pointer z-30 flex-shrink-0 transition-colors duration-300 px-1 border-[#fbfbfb] lg:border-none lg:hover:bg-none border-2 rounded-xl hover:bg-[#fbfbfb] relative flex py-10 md:max-w-max md:rounded-full w-[250px] items-center justify-start gap-[10px]'>
             <div className='w-[40px] h-[40px] group cursor-pointer rounded-full overflow-hidden flex justify-center items-center'>
               <img src={userProfileImg} alt="profile image" className='group-hover:scale-110 transition-all duration-300 '/>
             </div>
             <div className='md:hidden'>
                 <h1 className='text-[#0d0d0d] font-bold text-[0.9rem]'>{userData[0]?.name}</h1>
-                <h3 className='text-[0.8rem]'>Bank Accountant</h3>
+                <h3 className='text-[0.8rem] text-[#575757]'>Bank Accountant</h3>
             </div>
            <div className="absolute md:hidden right-1 w-[30px] h-[30px] transition-colors duration-300 flex items-center justify-center rounded-full text-[#797979] hover:bg-[#f1f1f1]">
             <FaAngleRight className="w-full"/>
@@ -78,6 +89,7 @@ const TopNav = () => {
           {openProfile && <ProfileInfo userData={userData}/>}
          </AnimatePresence>
         </motion.div>
+        </div>
         </nav>
            <SideHeaderNav openNav={openNav} setOpenNav={setOpenNav}/>
       </section>
@@ -142,7 +154,7 @@ const TopNav = () => {
         y: -50,
         opacity: 0
       }}
-      className='z-50 flex flex-col items-start justify-start absolute gap-10 top-[75px] shadow-lg p-10 right-10 w-[300px] h-auto rounded-[10px] bg-white'>
+      className='flex flex-col items-start justify-start absolute gap-10 top-[75px] shadow-lg p-10 right-10 w-[300px] h-auto rounded-[10px] bg-white'>
         <div className='flex items-center justify-start w-full gap-10'>
           <div className='w-[40px] h-[40px] group cursor-pointer rounded-full overflow-hidden flex justify-center items-center'>
               <img src={userProfileImg} alt="profile image" className='group-hover:scale-110 transition-all duration-300 '/>

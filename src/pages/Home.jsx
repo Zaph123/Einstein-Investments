@@ -25,7 +25,7 @@ import FAQS from "../components/Layout/FAQS";
    
 
     return (
-     <main>
+     <main className="bg-white">
         <Header />
         <Hero />
         <Access />
